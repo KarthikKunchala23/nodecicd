@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm ci --only=production
+RUN npm install --only=production
 
 EXPOSE 8080
 
