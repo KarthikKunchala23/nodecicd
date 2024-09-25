@@ -2,7 +2,7 @@
 
 # Variables
 S3_BUCKET="test-bucket-hp-run-jump"
-S3_KEY="test-bucket-hp-run-jump/nodejs-pipeline/*"
+S3_KEY="test-bucket-hp-run-jump/nodejs-pipeline/source_out/*"
 DESTINATION="/usr/src/app/large-file.zip"
 
 # Download the file from S3
