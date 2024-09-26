@@ -30,4 +30,7 @@ phases:
       - cat imagedefinitions.json
 
 artifacts:
-  files: imagedefinitions.json
+  files:
+     - appspec.yml
+     - imagedefinitions.json
+  discard-paths: no
