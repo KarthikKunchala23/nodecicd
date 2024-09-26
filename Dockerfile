@@ -1,4 +1,4 @@
-FROM node
+FROM 905418104867.dkr.ecr.us-east-1.amazonaws.com/node:latest
 
 WORKDIR /usr/src/app
 
