@@ -26,6 +26,13 @@ phases:
       - echo Writing image definitions file...
       - CONTAINER_NAME=nodeapp-container
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URL:$IMAGE_TAG > imagedefinitions.json
-      - cat imagedefinitions.json   
+      - cat imagedefinitions.json
+  update_ecs:
+    commands:
+      - export IMAGE_URI=$REPOSITORY_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - sed -i 's|<IMAGE_NAME>:<TAG>|'$IMAGE_URI'|g' taskdef.json
+      - aws ecs register-task-definition --cli-input-json file://taskdef.json
+
+      
 artifacts:
     files: imagedefinitions.json
