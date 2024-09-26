@@ -1,9 +1,9 @@
-version: 0.0
+version: 0.2
 Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "my-task"  # Placeholder for task definition
+        TaskDefinition: "PLACEHOLDER_TASK_DEFINITION"  # Placeholder for task definition
         LoadBalancerInfo:
-          ContainerName: "node"
+          ContainerName: "nodeapp-container"
           ContainerPort: 8080
