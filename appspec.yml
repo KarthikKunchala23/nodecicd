@@ -1,22 +1,22 @@
-version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /usr/src/app  # Destination where the files will be copied
+# version: 0.0
+# os: linux
+# files:
+#   - source: /
+#     destination: /usr/src/app  # Destination where the files will be copied
 
-hooks:
-  AfterInstall:
-    - location: scripts/install_dependencies.sh  # Install npm packages
-      timeout: 300
-      runas: root
-  ApplicationStart:
-    - location: scripts/start_server.sh  # Start the Node.js application
-      timeout: 300
-      runas: root
-  ValidateService:
-    - location: scripts/validate_service.sh  # Validate that the service is running
-      timeout: 300
-      runas: root
+# hooks:
+#   AfterInstall:
+#     - location: scripts/install_dependencies.sh  # Install npm packages
+#       timeout: 300
+#       runas: root
+#   ApplicationStart:
+#     - location: scripts/start_server.sh  # Start the Node.js application
+#       timeout: 300
+#       runas: root
+#   ValidateService:
+#     - location: scripts/validate_service.sh  # Validate that the service is running
+#       timeout: 300
+#       runas: root
 
 # version: 0.0
 # os: linux
@@ -28,3 +28,14 @@ hooks:
 #     - location: scripts/downloads_large_files.sh
 #       timeout: 300
 #       runas: root
+
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "my-task"
+        LoadBalancerInfo:
+          ContainerName: "node"
+          ContainerPort: 8080
+
